@@ -5,11 +5,15 @@ export class UserRepository{
     return UserModel.findOne({ cpf });
   }
 
+  async findByEmail(email: string): Promise<IUser | null>{
+    return UserModel.findOne({ email });
+  }
+
   async findById(id: string): Promise<IUser | null>{
     return UserModel.findById(id);
   }
 
-  async create(user: IUser): Promise<IUser | null>{
+  async create(user: any): Promise<IUser>{
     const newUser = new UserModel(user);
     return newUser.save();
   }
