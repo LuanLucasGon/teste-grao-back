@@ -18,4 +18,14 @@ export class RestaurantService {
 
     return restaurants;
   }
+
+  async getRestaurantById(id: string): Promise<IRestaurant | null>{
+    const restaurants = this.restaurantsRepository.findById(id);
+
+    if (!restaurants) {
+      return null;
+    }
+
+    return restaurants;
+  }
 }
