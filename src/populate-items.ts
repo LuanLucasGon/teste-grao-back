@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'; // Supondo que você exportou os modelos de Restaurante e MenuItem corretamente
+import mongoose from 'mongoose';
 import RestaurantModel from './models/RestaurantModels';
 import MenuItemsModel from './models/MenuItemsModel';
 
@@ -23,7 +23,7 @@ const createMenuItems = async () => {
   // Criar os itens de menu para cada restaurante
   const menuItems = await MenuItemsModel.create([
     {
-      restaurant: restaurants[0]._id, // Churrascaria Fogo de Chão
+      restaurant: restaurants[0]._id,
       name: 'Picanha',
       description: 'A famosa picanha no espeto, acompanhada de farofa e vinagrete.',
       price: 89.90,
@@ -32,7 +32,7 @@ const createMenuItems = async () => {
       available: true,
     },
     {
-      restaurant: restaurants[1]._id, // Bar do Mineiro
+      restaurant: restaurants[1]._id,
       name: 'Feijão Tropeiro',
       description: 'Feijão tropeiro com torresmo, arroz e couve refogada.',
       price: 29.90,
@@ -41,7 +41,7 @@ const createMenuItems = async () => {
       available: true,
     },
     {
-      restaurant: restaurants[2]._id, // Restaurante Aprazível
+      restaurant: restaurants[2]._id,
       name: 'Moqueca de Peixe',
       description: 'Moqueca de peixe feita com leite de coco e dendê.',
       price: 59.90,
@@ -50,7 +50,7 @@ const createMenuItems = async () => {
       available: true,
     },
     {
-      restaurant: restaurants[3]._id, // Casa do Porco
+      restaurant: restaurants[3]._id,
       name: 'Porco à Paraguaia',
       description: 'Porco assado com molho especial, acompanhado de arroz e farofa.',
       price: 49.90,
@@ -59,7 +59,7 @@ const createMenuItems = async () => {
       available: true,
     },
     {
-      restaurant: restaurants[4]._id, // Acarajé da Regina
+      restaurant: restaurants[4]._id,
       name: 'Acarajé',
       description: 'Acarajé com vatapá, caruru e camarão.',
       price: 25.00,
@@ -68,8 +68,6 @@ const createMenuItems = async () => {
       available: true,
     },
   ]);
-
-  console.log('Menu items created:', menuItems);
 };
 
 const run = async () => {

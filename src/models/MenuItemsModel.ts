@@ -4,23 +4,22 @@ export interface IMenuItem extends Document {
   restaurant: Types.ObjectId;
   name: string;
   description: string;
-  price: number;
+  price: string;
   imageUrl: string;
   category: string;
   available: boolean;
 }
 
-// Schema do Mongoose para o Item de Menu
 const IMenuItem = new Schema<IMenuItem>({
-  restaurant: { type: Schema.Types.ObjectId, ref: 'restaurant', required: true },
+  restaurant: { type: Schema.Types.ObjectId, ref: 'restaurants', required: true },
   name: { type: String, required: true },
   description: { type: String, required: false },
-  price: { type: Number, required: true },
+  price: { type: String, required: true },
   imageUrl: { type: String, required: false },
   category: { type: String, required: true },
   available: { type: Boolean, default: true }
 });
 
-const MenuItemsModel = mongoose.model<IMenuItem>('menuItem', IMenuItem);
+const MenuItemsModel = mongoose.model<IMenuItem>('items', IMenuItem);
 
 export default MenuItemsModel

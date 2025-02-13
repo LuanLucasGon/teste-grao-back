@@ -2,10 +2,11 @@ import express from 'express';
 import { Database } from './config/database';
 import authRoutes from "./routes/authRoutes";
 import userRoutes from "./routes/userRoutes";
+import restaurantRoute from './routes/restaurantRoute';
 
 const app = express()
 
-app.use(express.json(), authRoutes, userRoutes);
+app.use(express.json(), authRoutes, userRoutes, restaurantRoute);
 
 Database.connect().then(() => {
   app.listen(3000, ()=>{
