@@ -18,7 +18,7 @@ export class UserService{
     return {
       id: user.id,
       name: user.name,
-      cpf: user.name,
+      cpf: user.cpf,
       email: user.email,
     };
   }
