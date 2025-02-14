@@ -12,7 +12,6 @@ const connectDB = async () => {
 };
 
 const createMenuItems = async () => {
-  // Buscar os restaurantes já criados para associar os itens de menu
   const restaurants = await RestaurantModel.find();
 
   if (restaurants.length === 0) {
@@ -20,7 +19,6 @@ const createMenuItems = async () => {
     return;
   }
 
-  // Criar os itens de menu para cada restaurante
   const menuItems = await MenuItemsModel.create([
     {
       restaurant: restaurants[0]._id,
@@ -28,7 +26,7 @@ const createMenuItems = async () => {
       description: 'A famosa picanha no espeto, acompanhada de farofa e vinagrete.',
       price: 89.90,
       category: 'Churrasco',
-      imageUrl: 'http://example.com/picanha.png',
+      imageUrl: 'assets/images/categories/churrasco.png',
       available: true,
     },
     {
@@ -55,7 +53,7 @@ const createMenuItems = async () => {
       description: 'Porco assado com molho especial, acompanhado de arroz e farofa.',
       price: 49.90,
       category: 'Carnes',
-      imageUrl: 'http://example.com/porco.png',
+      imageUrl: 'assets/images/categories/churrasco.png',
       available: true,
     },
     {
@@ -73,7 +71,7 @@ const createMenuItems = async () => {
 const run = async () => {
   await connectDB();
   await createMenuItems();
-  mongoose.connection.close(); // Fecha a conexão após a operação
+  mongoose.connection.close();
 };
 
 run().catch((err) => console.error('Error during creation', err));

@@ -20,9 +20,9 @@ const createRestaurants = async () => {
       phone: '(11) 3000-0000',
       rating: '4.9',
       description: 'A verdadeira experiência do churrasco brasileiro.',
-      iconUrl: 'http://example.com/icon.png',
-      coverUrl: 'http://example.com/cover.png',
-      menuItem: [], // Nenhum item de menu associado por enquanto
+      iconUrl: 'assets/images/restaurant1.png',
+      coverUrl: 'assets/images/coverphotos/cover1.pngg',
+      menuItem: [],
     },
     {
       name: 'Bar do Mineiro',
@@ -31,9 +31,9 @@ const createRestaurants = async () => {
       phone: '(21) 2222-2222',
       rating: '4.8',
       description: 'Comida típica mineira com um toque especial.',
-      iconUrl: 'http://example.com/icon.png',
-      coverUrl: 'http://example.com/cover.png',
-      menuItem: [], // Nenhum item de menu associado por enquanto
+      iconUrl: 'assets/images/restaurant1.png',
+      coverUrl: 'assets/images/coverphotos/cover1.png',
+      menuItem: [],
     },
     {
       name: 'Restaurante Aprazível',
@@ -42,9 +42,9 @@ const createRestaurants = async () => {
       phone: '(21) 2245-1234',
       rating: '4.7',
       description: 'Restaurante com vista panorâmica e pratos típicos do Brasil.',
-      iconUrl: 'http://example.com/icon.png',
-      coverUrl: 'http://example.com/cover.png',
-      menuItem: [], // Nenhum item de menu associado por enquanto
+      iconUrl: 'assets/images/restaurant2.png',
+      coverUrl: 'assets/images/coverphotos/cover1.png',
+      menuItem: [],
     },
     {
       name: 'Casa do Porco',
@@ -53,9 +53,9 @@ const createRestaurants = async () => {
       phone: '(11) 3105-7335',
       rating: '4.8',
       description: 'Pratos típicos de boteco com um toque gourmet.',
-      iconUrl: 'http://example.com/icon.png',
-      coverUrl: 'http://example.com/cover.png',
-      menuItem: [], // Nenhum item de menu associado por enquanto
+      iconUrl: 'assets/images/restaurant3.png',
+      coverUrl: 'assets/images/coverphotos/cover1.png',
+      menuItem: [],
     },
     {
       name: 'Acarajé da Regina',
@@ -64,10 +64,10 @@ const createRestaurants = async () => {
       phone: '(71) 3333-5555',
       rating: '4.6',
       description: 'A verdadeira comida baiana, com destaque para o acarajé.',
-      iconUrl: 'http://example.com/icon.png',
-      coverUrl: 'http://example.com/cover.png',
-      menuItem: [], // Nenhum item de menu associado por enquanto
-    },
+      iconUrl: 'assets/images/restaurant1.png',
+      coverUrl: 'assets/images/coverphotos/cover1.png',
+      menuItem: [],
+    }
   ]);
 
   console.log('Restaurants created:', restaurants);
@@ -76,7 +76,7 @@ const createRestaurants = async () => {
 const run = async () => {
   await connectDB();
   await createRestaurants();
-  mongoose.connection.close(); // Fecha a conexão após a operação
+  mongoose.connection.close();
 };
 
 run().catch((err) => console.error('Error during creation', err));
