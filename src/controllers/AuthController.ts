@@ -20,8 +20,8 @@ export class AuthController{
   static async login(req: Request, res: Response){
     try {
       const data: LoginDTO = req.body;
-      const { token } = await authService.login(data);
-      res.status(201).json({ msg: "Autenticação realizada com sucesso!", token });
+      const { token, name } = await authService.login(data);
+      res.status(201).json({ msg: "Autenticação realizada com sucesso!", token, name });
     } catch (error) {
       res.status(500).json({msg: (error as Error).message});
     }

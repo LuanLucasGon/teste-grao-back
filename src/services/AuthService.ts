@@ -21,9 +21,14 @@ export class AuthService{
       throw new Error('A senhas não coincidem');
     }
 
-    const userExists = await this.userRepository.findByCpf(cpf);
+    let userExists = await this.userRepository.findByCpf(cpf);
     if(userExists){
       throw new Error('CPF já cadastado, ustilize outro');
+    }
+
+    userExists = await this.userRepository.findByEmail(email);
+    if(userExists){
+      throw new Error('Email já cadastado, ustilize outro');
     }
 
     const salt = await bcrypt.genSalt(12);
@@ -39,7 +44,7 @@ export class AuthService{
     };
   }
 
-  async login(data: LoginDTO): Promise<{token: string}>{
+  async login(data: LoginDTO): Promise<{token: string, name: string}>{
     const {email, password} = data;
 
     const user = await this.userRepository.findByEmail(email);
@@ -54,7 +59,8 @@ export class AuthService{
 
     const secret = process.env.SECRET || "";
     const token = jwt.sign({ id: user._id }, secret);
+    const name = user.name;
 
-    return {token};
+    return {token, name};
   }
 }
