@@ -36,4 +36,20 @@ export class RestaurantController{
       res.status(500).json({msg: (error as Error).message});
     }
   }
+
+  static async searchRestaurants(req: Request, res: Response){
+    try {
+      const query = req.params.query as string;
+
+      const restaurants = await restaurantService.searchRestaurant(query);
+
+      res.status(200).json({ restaurants }); 
+  } catch (error) {
+      console.error("Erro na pesquisa:", error);
+
+      if (!res.headersSent) { 
+          res.status(500).json({ msg: "Erro interno no servidor" });
+      }
+  }
+}
 }

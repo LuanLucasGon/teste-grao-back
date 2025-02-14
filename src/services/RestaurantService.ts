@@ -42,4 +42,16 @@ export class RestaurantService {
 
     return items;
   }
+
+  async searchRestaurant(query: string){
+    const searchRegex = new RegExp(query, 'i');
+    const restaurants = await this.restaurantsRepository.findByRegex(searchRegex);
+    const menuItems = await this.itemsRepository.findByRegex(searchRegex);
+    const restaurantsFromMenu = menuItems.map(item => item.restaurant);
+    const allRestaurants = [...new Set([...restaurants, ...restaurantsFromMenu])];
+    const uniqueRestaurants = allRestaurants.filter((value: any, index, self) => 
+      self.findIndex((r: any) => r.name === value.name) === index
+    );
+    return uniqueRestaurants;
+  }
 }

@@ -8,4 +8,8 @@ export class RestaurantsRepository {
   async findById(id: string): Promise<IRestaurant | null>{
     return RestaurantModel.findById(id);
   }
+
+  async findByRegex(searchRegex: RegExp) {
+    return await RestaurantModel.find({ name: searchRegex });
+}
 }
